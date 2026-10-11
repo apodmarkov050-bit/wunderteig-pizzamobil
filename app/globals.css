@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&display=swap');
 
 :root {
@@ -33,7 +34,9 @@ a {
 }
 
 button,
-input {
+input,
+textarea,
+select {
   font-family: inherit;
 }
 
@@ -41,10 +44,10 @@ button {
   cursor: pointer;
 }
 
-/* ================= NAV ================= */
+/* ================= NAVIGATION ================= */
 
 .nav {
-  height: 100px;
+  min-height: 100px;
   padding: 0 5.5vw;
   display: flex;
   align-items: center;
@@ -105,6 +108,7 @@ button {
   color: white;
   padding: 16px 30px;
   border-radius: 999px;
+  border: none;
   font-weight: 700;
 }
 
@@ -115,17 +119,20 @@ button {
 /* ================= HERO ================= */
 
 .hero {
-  min-height: 720px;
-  padding: 80px 7vw 100px;
+  min-height: 650px;
+  padding: 65px 7vw 75px;
   display: grid;
-  grid-template-columns: 1fr 0.9fr;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   align-items: center;
-  gap: 40px;
+  gap: 30px;
   overflow: hidden;
 }
 
 .heroText {
   max-width: 720px;
+  min-width: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .eyebrow {
@@ -138,8 +145,8 @@ button {
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(72px, 8vw, 130px);
-  line-height: 0.83;
+  font-size: clamp(68px, 7.2vw, 112px);
+  line-height: 0.88;
   letter-spacing: -0.075em;
 }
 
@@ -150,14 +157,16 @@ button {
 
 .lead {
   max-width: 590px;
-  margin: 48px 0 34px;
+  margin: 38px 0 30px;
   color: var(--muted);
-  font-size: 21px;
+  font-size: 20px;
   line-height: 1.55;
 }
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 14px;
 }
 
@@ -166,12 +175,14 @@ button {
   align-items: center;
   justify-content: center;
   min-height: 56px;
-  padding: 0 30px;
+  padding: 0 26px;
   border-radius: 999px;
   background: var(--accent);
   color: white;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .primary:hover {
@@ -180,27 +191,49 @@ button {
 
 .trust {
   display: flex;
-  gap: 28px;
-  margin-top: 44px;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+  margin-top: 35px;
   color: #68625b;
   font-size: 15px;
 }
 
+/* ================= PIZZA IMAGE ================= */
+
 .pizzaVisual {
-  min-height: 500px;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  position: relative;
 }
 
 .pizza {
-  font-size: clamp(250px, 27vw, 430px);
-  line-height: 1;
-  transform: rotate(-13deg);
-  filter: drop-shadow(20px 25px 25px rgba(0, 0, 0, 0.13));
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  transform: rotate(-7deg);
 }
 
-/* ================= PIZZA ================= */
+.pizzaImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* ================= SECTIONS ================= */
 
 .section {
   padding: 110px 7vw 120px;
@@ -219,7 +252,7 @@ button {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
 }
 
@@ -243,6 +276,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .cardTop span {
@@ -267,6 +301,8 @@ button {
   line-height: 1.45;
 }
 
+/* ================= QUANTITY ================= */
+
 .quantity {
   display: flex;
   align-items: center;
@@ -277,6 +313,7 @@ button {
 .quantity button {
   width: 36px;
   height: 36px;
+  flex-shrink: 0;
   border: 1px solid var(--line);
   border-radius: 50%;
   background: white;
@@ -324,7 +361,7 @@ button {
 
 .customerForm {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   padding: 38px;
   margin-bottom: 24px;
@@ -340,10 +377,13 @@ button {
   font-size: 27px;
 }
 
-.customerForm input {
+.customerForm input,
+.customerForm textarea,
+.customerForm select {
   width: 100%;
-  height: 62px;
-  padding: 0 20px;
+  min-width: 0;
+  min-height: 60px;
+  padding: 16px 20px;
   border: 1px solid #d4ccc0;
   border-radius: 14px;
   background: white;
@@ -352,11 +392,14 @@ button {
   outline: none;
 }
 
-.customerForm input::placeholder {
+.customerForm input::placeholder,
+.customerForm textarea::placeholder {
   color: #999289;
 }
 
-.customerForm input:focus {
+.customerForm input:focus,
+.customerForm textarea:focus,
+.customerForm select:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 4px rgba(189, 61, 32, 0.1);
 }
@@ -373,6 +416,7 @@ button {
 .cartHeader {
   display: flex;
   justify-content: space-between;
+  gap: 15px;
   margin-bottom: 8px;
   color: #aaa59e;
   font-size: 14px;
@@ -398,6 +442,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 15px;
   padding: 28px 0 25px;
   font-size: 21px;
 }
@@ -409,6 +454,7 @@ button {
 .whatsappButton {
   width: 100%;
   min-height: 66px;
+  padding: 14px 22px;
   border: none;
   border-radius: 999px;
   background: #20c66a;
@@ -449,6 +495,7 @@ button {
 .floatingCartIcon {
   width: 43px;
   height: 43px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -475,6 +522,7 @@ button {
 
 .floatingCartPrice {
   font-size: 16px;
+  white-space: nowrap;
 }
 
 /* ================= ABOUT ================= */
@@ -535,6 +583,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
   color: var(--muted);
 }
 
@@ -550,22 +599,36 @@ footer p {
 /* ================= TABLET ================= */
 
 @media (max-width: 1000px) {
-
   .nav nav {
     gap: 25px;
     margin-right: 20px;
   }
 
   .hero {
-    grid-template-columns: 1fr;
+    min-height: auto;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+    padding: 60px 5vw 75px;
+    gap: 15px;
   }
 
-  .pizzaVisual {
-    min-height: 350px;
+  .hero h1 {
+  margin: 0;
+  font-size: clamp(64px, 6.5vw, 100px);
+  line-height: 0.9;
+  letter-spacing: -0.075em;
+}
+
+  .lead {
+    font-size: 18px;
+    margin-top: 30px;
+  }
+
+  .pizza {
+    max-width: 340px;
   }
 
   .cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .darkSection {
@@ -577,9 +640,8 @@ footer p {
 /* ================= MOBILE ================= */
 
 @media (max-width: 700px) {
-
   .nav {
-    height: 78px;
+    min-height: 78px;
     padding: 0 20px;
   }
 
@@ -589,6 +651,10 @@ footer p {
 
   .nav nav {
     display: none;
+  }
+
+  .navRight {
+    gap: 8px;
   }
 
   .navOrder {
@@ -602,32 +668,69 @@ footer p {
 
   .hero {
     min-height: auto;
-    padding: 65px 20px 80px;
-    display: block;
+    padding: 55px 20px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .heroText {
+    width: 100%;
+    max-width: none;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    margin-bottom: 20px;
   }
 
   .hero h1 {
-    font-size: 65px;
+    font-size: clamp(56px, 12vw, 72px);
+    line-height: 0.9;
   }
 
   .lead {
-    margin-top: 35px;
-    font-size: 18px;
+    margin: 28px 0 25px;
+    font-size: 17px;
+  }
+
+  .actions {
+    gap: 10px;
+  }
+
+  .primary {
+    min-height: 50px;
+    padding: 0 20px;
+    font-size: 15px;
   }
 
   .trust {
-    flex-wrap: wrap;
-    gap: 12px 20px;
-    margin-top: 30px;
+    gap: 12px 18px;
+    margin-top: 25px;
+    font-size: 14px;
   }
 
   .pizzaVisual {
-    min-height: 280px;
-    margin-top: 25px;
+    width: 100%;
+    min-height: 0;
+    margin-top: 10px;
+    overflow: hidden;
   }
 
   .pizza {
-    font-size: 250px;
+    width: 100%;
+    max-width: 290px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    transform: rotate(-5deg);
+  }
+
+  .pizzaImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   .section {
@@ -671,8 +774,11 @@ footer p {
     grid-column: auto;
   }
 
-  .customerForm input {
-    height: 60px;
+  .customerForm input,
+  .customerForm textarea,
+  .customerForm select {
+    min-height: 58px;
+    font-size: 16px;
   }
 
   .cart {
@@ -697,7 +803,7 @@ footer p {
     font-size: 16px;
   }
 
-  /* MOBILE CART */
+  /* Mobile cart */
 
   .floatingCart {
     left: 15px;
@@ -744,5 +850,102 @@ footer p {
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
+  }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: 52px;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .primary {
+    width: 100%;
+  }
+
+  .pizza {
+    max-width: 250px;
+  }
+
+  .floatingCart {
+    gap: 9px;
+    padding: 12px;
+  }
+}
+/* HERO BUTTONS — FIX */
+.heroText .actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.heroText .actions .primary {
+  padding: 0 16px;
+  font-size: 14px;
+  white-space: nowrap;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .heroText .actions {
+    flex-wrap: wrap;
+  }
+
+  .heroText .actions .primary {
+    min-height: 52px;
+    padding: 0 20px;
+    font-size: 15px;
+  }
+}
+.categoryImage {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+@media (max-width: 600px) {
+  .categoryCards {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .categoryCard {
+    padding: 24px !important;
+    min-height: auto !important;
+  }
+
+  .categoryCard img {
+    width: 100% !important;
+    height: 160px !important;
+    object-fit: contain !important;
+    margin: 0 auto 20px !important;
+  }
+}
+
+.pizzaImage {
+  display: block;
+  width: 125%;
+  height: 540px;
+  object-fit: contain;
+  object-position: center;
+  max-width: none;
+}
+
+@media (max-width: 600px) {
+  .pizzaImage {
+    width: 100%;
+    height: 320px;
+    max-width: 100%;
   }
 }
