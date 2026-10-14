@@ -213,7 +213,7 @@ button {
 
 .pizza {
   width: 100%;
-  max-width: 450px;
+ max-width: 520px;
   aspect-ratio: 1 / 1;
   height: auto;
   display: flex;
@@ -948,4 +948,48 @@ footer p {
     height: 320px;
     max-width: 100%;
   }
+}
+/* SPECIAL OFFER */
+.specialOffer {
+  background: #f5efe7;
+  color: #191919;
+  padding: 80px 7%;
+  text-align: center;
+}
+
+.specialOffer .eyebrow {
+  color: #c43b20;
+  letter-spacing: 4px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.specialOffer h2 {
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.1;
+  margin: 20px 0;
+}
+
+.specialOffer p {
+  font-size: 18px;
+  color: #746e67;
+}
+
+.specialOfferButton {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 16px 28px;
+  background: #c43b20;
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.specialOfferButton:hover {
+  background: #9f2e18;
+}
+.nav nav a.specialOfferNav {
+  font-weight: 900 !important;
 }

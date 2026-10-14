@@ -10,6 +10,10 @@ const translations = {
     menu: 'Menü',
     about: 'Über uns',
     contact: 'Kontakt',
+    specialOffer: 'Unser Spezialangebot',
+    specialOfferTitle: 'Unser Spezialangebot',
+specialOfferDescription: 'Entdecke unser besonderes Angebot für dich!',
+specialOfferButton: 'Menü entdecken →',
     order: 'Bestellen',
     heroTitle: 'Pizza, die',
     heroTitleSecond: 'zu dir kommt.',
@@ -98,6 +102,10 @@ preferredTime: 'Wunschzeit, z. B. 19:30',
     menu: 'Menu',
     about: 'About us',
     contact: 'Contact',
+    specialOffer: 'Our Special Offer',
+    specialOfferTitle: 'Our Special Offer',
+specialOfferDescription: 'Discover our special deal for you!',
+specialOfferButton: 'Explore the menu →',
     order: 'Order now',
     heroTitle: 'Pizza that',
     heroTitleSecond: 'comes to you.',
@@ -553,6 +561,9 @@ Vielen Dank!`;
 
         <nav>
          <a href="#menu">{t.menu}</a>
+        <a href="#special-offer" className="specialOfferNav">
+  {t.specialOffer}
+</a>
 <a href="#about">{t.about}</a>
 <a href="#contact">{t.contact}</a>
         </nav>
@@ -1241,6 +1252,17 @@ marginRight: 'auto',
         </div>
       </section>
 
+      {/* SPECIAL OFFER */}
+<section id="special-offer" className="specialOffer">
+  <div>
+    <p className="eyebrow">WUNDERTEIG</p>
+    <h2>{t.specialOfferTitle}</h2>
+   <p>{t.specialOfferDescription}</p>
+    <a href="#menu" className="specialOfferButton">
+     {t.specialOfferButton}
+    </a>
+  </div>
+</section>
       {/* ABOUT */}
       <section id="about" className="darkSection">
         <div>
