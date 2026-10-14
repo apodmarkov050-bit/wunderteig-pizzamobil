@@ -641,10 +641,12 @@ footer p {
 
 @media (max-width: 700px) {
   .nav {
-    min-height: 78px;
-    padding: 0 20px;
-  }
-
+  min-height: 78px;
+  padding: 12px 16px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 8px;
+}
   .logo {
     font-size: 23px;
   }
