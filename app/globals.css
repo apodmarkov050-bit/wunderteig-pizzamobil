@@ -649,9 +649,20 @@ footer p {
     font-size: 23px;
   }
 
-  .nav nav {
-    display: none;
-  }
+ .nav nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 18px;
+  width: 100%;
+  order: 3;
+  padding-top: 12px;
+}
+
+.nav nav a {
+  font-size: 13px;
+  white-space: nowrap;
+}
 
   .navRight {
     gap: 8px;
