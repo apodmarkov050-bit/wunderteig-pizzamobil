@@ -272,6 +272,7 @@ const categories = [
 export default function Home() {
   const [cart, setCart] = useState({});
   const [language, setLanguage] = useState('de');
+  const [isOfferOpen, setIsOfferOpen] = useState(false);
   const t = translations[language];
   const productTranslations = {
   margherita: {
@@ -561,9 +562,13 @@ Vielen Dank!`;
 
         <nav>
          <a href="#menu">{t.menu}</a>
-        <a href="#special-offer" className="specialOfferNav">
+       <button
+  type="button"
+  className="specialOfferNav"
+  onClick={() => setIsOfferOpen(true)}
+>
   {t.specialOffer}
-</a>
+</button>
 <a href="#about">{t.about}</a>
 <a href="#contact">{t.contact}</a>
         </nav>
@@ -1348,6 +1353,43 @@ marginRight: 'auto',
         </div>
         <p>© 2026 Wunderteig · Pizzamobil</p>
       </footer>
+
+     
+      {isOfferOpen && (
+        <div className="offerOverlay" onClick={() => setIsOfferOpen(false)}>
+          <div
+            className="offerPopup"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="offerClose"
+              onClick={() => setIsOfferOpen(false)}
+              aria-label="Schließen"
+            >
+              ×
+            </button>
+
+            <img
+              src="/wunderteig-special-offer.png"
+              alt="Wunderteig: 2 Pizzen kaufen, die 3. gratis"
+            />
+
+            <button
+              type="button"
+              className="offerOrder"
+              onClick={() => {
+                setIsOfferOpen(false);
+                document.getElementById("menu")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
+            >
+              Jetzt bestellen →
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* FLOATING CART */}
       {cartItems.length > 0 && (

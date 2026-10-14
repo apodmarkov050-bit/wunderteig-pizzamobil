@@ -1017,3 +1017,97 @@ footer p {
 .nav nav a.specialOfferNav {
   font-weight: 900 !important;
 }
+
+/* SPECIAL OFFER POPUP */
+.offerOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(20, 16, 12, 0.78);
+  backdrop-filter: blur(8px);
+}
+
+.offerPopup {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 12px;
+  border-radius: 22px;
+  background: #f5efe5;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+  animation: offerAppear 0.25s ease-out;
+}
+
+.offerPopup img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+.offerClose {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #191919;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+}
+
+.offerOrder {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #c6381d;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@keyframes offerAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .offerPopup {
+    max-width: 420px;
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  .offerClose {
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .offerOrder {
+    padding: 14px;
+  }
+}
