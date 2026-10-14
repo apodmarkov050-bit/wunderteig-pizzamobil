@@ -896,6 +896,14 @@ footer p {
 
 /* MOBILE */
 @media (max-width: 700px) {
+   .pizza {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .pizzaVisual {
+    width: 100%;
+  }
   .heroText .actions {
     flex-wrap: wrap;
   }
@@ -944,10 +952,13 @@ footer p {
 
 @media (max-width: 600px) {
   .pizzaImage {
-    width: 100%;
-    height: 320px;
-    max-width: 100%;
-  }
+  display: block;
+  width: 145%;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
+}
 }
 /* SPECIAL OFFER */
 .specialOffer {
