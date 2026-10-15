@@ -1014,9 +1014,36 @@ footer p {
 .specialOfferButton:hover {
   background: #9f2e18;
 }
-.nav nav a.specialOfferNav {
-  font-weight: 900 !important;
+
+.nav nav .specialOfferNav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: #c43d20;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  border: 1px solid #c43d20;
+  box-shadow: 0 4px 12px rgba(196, 61, 32, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background 0.2s ease;
 }
+
+.nav nav .specialOfferNav:hover {
+  background: #a9321b;
+  box-shadow: 0 7px 18px rgba(196, 61, 32, 0.28);
+  transform: translateY(-2px);
+}
+
+.nav nav .specialOfferNav:active {
+  transform: scale(0.97);
+}
+
 
 /* SPECIAL OFFER POPUP */
 .offerOverlay {
