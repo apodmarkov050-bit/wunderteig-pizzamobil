@@ -510,7 +510,7 @@ Vielen Dank!`;
       !customer.phone.trim() ||
       !customer.time.trim()
     ) {
-      alalert(language === 'de' ? 'Bitte füllen Sie Name, Telefon und Wunschzeit aus.' : 'Please enter your name, phone number, and preferred time.');
+      alert(language === 'de' ? 'Bitte füllen Sie Name, Telefon und Wunschzeit aus.' : 'Please enter your name, phone number, and preferred time.');
       scrollToCart();
       return false;
     }
