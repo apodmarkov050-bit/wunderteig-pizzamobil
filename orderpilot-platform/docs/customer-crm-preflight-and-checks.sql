@@ -1,0 +1,4 @@
+-- Retired duplicate. The canonical read-only preflight and audit SQL is:
+-- supabase/checks/customer_crm_preflight_and_audit.sql
+-- Run and maintain that file only; it contains baseline, cutoff, comparison,
+-- cohort-link, and order/phone/customer plus order/address/customer checks.
