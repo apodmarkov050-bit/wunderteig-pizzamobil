@@ -18,6 +18,11 @@ export async function middleware(request) {
     process.env.ORDERPILOT_DEMO_MODE !== 'false' &&
     isLegacyServerRoute
   ) {
+    // Keep the legacy admin area private, but let the familiar /admin bookmark
+    // open the password-protected OrderPilot restaurant demo instead.
+    if (pathname === '/admin' || pathname === '/admin/login') {
+      return NextResponse.redirect(new URL('/restaurant/wunderteig', request.url));
+    }
     return NextResponse.redirect(new URL('/', request.url));
   }
 
