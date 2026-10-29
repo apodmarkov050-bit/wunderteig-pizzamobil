@@ -11,6 +11,7 @@ const STATUS_LABELS = {
   proposed: 'Zeit vorgeschlagen',
   accepted: 'Vom Kunden bestätigt',
   change_requested: 'Neue Zeit angefragt',
+  completed: 'Abgeschlossen',
 };
 
 function datePartsInBerlin(date) {
@@ -114,6 +115,7 @@ export async function GET(request) {
         orderCount: rows.length,
         awaitingResponse: rows.filter((row) => ['pending', 'change_requested'].includes(row.status)).length,
         acceptedCount: rows.filter((row) => row.status === 'accepted').length,
+        completedCount: rows.filter((row) => row.status === 'completed').length,
         estimatedOrderValue,
         averageOrderValue: rows.length ? estimatedOrderValue / rows.length : 0,
       },

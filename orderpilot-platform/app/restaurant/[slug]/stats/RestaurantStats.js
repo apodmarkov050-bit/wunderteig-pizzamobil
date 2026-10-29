@@ -9,6 +9,7 @@ const statusNames = {
   proposed: 'Zeit vorgeschlagen',
   accepted: 'Vom Kunden bestätigt',
   change_requested: 'Änderungswunsch eingegangen',
+  completed: 'Abgeschlossen',
 };
 const euro = (value) => new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(value || 0);
 
@@ -95,6 +96,7 @@ export default function RestaurantStats({ restaurantSlug }) {
             <article><span>Bestellungen im Zeitraum</span><strong>{stats.metrics.orderCount}</strong></article>
             <article><span>Warten auf Antwort</span><strong>{stats.metrics.awaitingResponse}</strong></article>
             <article><span>Vom Kunden bestätigt</span><strong>{stats.metrics.acceptedCount}</strong></article>
+            <article><span>Abgeschlossene Bestellungen</span><strong>{stats.metrics.completedCount}</strong></article>
             <article><span>Geschätzter Bestellwert</span><strong>{euro(stats.metrics.estimatedOrderValue)}</strong></article>
           </div>
           <p className="restaurantStatsNote">Der Betrag ist eine Schätzung des Bestellvolumens und kein tatsächlicher Umsatz, da Zahlungen über die Plattform noch nicht aktiviert sind. Durchschnittlicher Bestellwert: <strong>{euro(stats.metrics.averageOrderValue)}</strong>.</p>

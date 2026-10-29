@@ -49,11 +49,12 @@ export async function PATCH(request, context) {
     const isRestaurant = hasRestaurantAccess(request);
     const allowedCustomerStatuses = ['accepted', 'change_requested'];
     if (isRestaurant) {
-      if (!['pending', 'change_requested'].includes(current.status) || changes?.status !== 'proposed') {
+      const completingOrder = current.status === 'accepted' && changes?.status === 'completed';
+      if (!completingOrder && (!['pending', 'change_requested'].includes(current.status) || changes?.status !== 'proposed')) {
         return jsonError('Für diese Bestellung kann keine Zeit mehr vorgeschlagen werden.', 409);
       }
       const prepMinutes = Number(changes.prepMinutes);
-      if (!Number.isInteger(prepMinutes) || prepMinutes < 5 || prepMinutes > 180 || !/^\d{2}:\d{2}$/.test(changes.confirmedTime || '')) {
+      if (!completingOrder && (!Number.isInteger(prepMinutes) || prepMinutes < 5 || prepMinutes > 180 || !/^\d{2}:\d{2}$/.test(changes.confirmedTime || ''))) {
         return jsonError('Ungültiger Zeitvorschlag.', 400);
       }
     } else if (!allowedCustomerStatuses.includes(changes?.status) || current.status !== 'proposed') {
@@ -63,8 +64,9 @@ export async function PATCH(request, context) {
     const nextData = {
       ...current.order_data,
       ...changes,
-      proposedAt: isRestaurant ? new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) : current.order_data.proposedAt,
+      proposedAt: isRestaurant && changes.status === 'proposed' ? new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) : current.order_data.proposedAt,
       ...(changes.status === 'accepted' ? { customerAcceptedAt: new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) } : {}),
+      ...(changes.status === 'completed' ? { completedAt: new Date().toISOString() } : {}),
       ...(changes.status === 'change_requested' ? { customerAcceptedAt: undefined } : {}),
     };
     const { data, error } = await supabase
