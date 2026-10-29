@@ -1882,3 +1882,46 @@ footer p {
   .choiceCard { min-height: 78px; }
   .accountArrow { max-width: 68px; white-space: normal; text-align: right; }
 }
+
+/* Restaurant demo statistics */
+.restaurantStatsPage { padding-top: 28px; }
+.restaurantStatsPage > .backLink { display: inline-block; margin-bottom: 18px; }
+.restaurantStatsToolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 24px 0 18px; }
+.restaurantStatsPeriods { display: flex; flex-wrap: wrap; gap: 8px; }
+.restaurantStatsPeriods button, .restaurantStatsReconnect { min-height: 40px; padding: 8px 14px; border: 1px solid #dce7de; border-radius: 8px; background: #fff; color: #26372b; font-weight: 600; }
+.restaurantStatsPeriods button.isActive { border-color: #128443; background: #128443; color: #fff; }
+.restaurantStatsCards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.restaurantStatsCards article { display: grid; gap: 12px; min-width: 0; padding: 20px; border: 1px solid #dce7de; border-radius: 14px; background: #fff; }
+.restaurantStatsCards span { color: #65736a; font-size: 13px; }
+.restaurantStatsCards strong { overflow-wrap: anywhere; font-size: clamp(21px, 3vw, 29px); }
+.restaurantStatsNote { color: #65736a; font-size: 13px; line-height: 1.6; }
+.restaurantStatsPanels { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(260px, 1fr); gap: 14px; margin-top: 22px; }
+.restaurantStatsPanel { min-width: 0; padding: 20px; border: 1px solid #dce7de; border-radius: 14px; background: #fff; }
+.restaurantStatsPanel h2 { margin: 0 0 18px; font-size: 18px; }
+.restaurantStatsPanel > p { color: #65736a; font-size: 13px; }
+.restaurantStatsChart { display: flex; align-items: flex-end; gap: 7px; min-height: 190px; overflow-x: auto; padding-top: 8px; }
+.restaurantStatsBar { display: grid; grid-template-rows: 20px minmax(20px, 1fr) 24px; flex: 1 0 34px; height: 170px; min-width: 34px; text-align: center; }
+.restaurantStatsBar strong { overflow: hidden; color: #65736a; font-size: 9px; white-space: nowrap; }
+.restaurantStatsBar i { align-self: flex-end; width: min(100%, 32px); min-height: 0; margin: 0 auto; border-radius: 5px 5px 0 0; background: #21834a; }
+.restaurantStatsBar span { align-self: flex-end; color: #65736a; font-size: 10px; white-space: nowrap; }
+.restaurantStatsStatusList, .restaurantStatsTopItems ol { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.restaurantStatsStatusList li, .restaurantStatsTopItems li { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #435148; font-size: 13px; }
+.restaurantStatsStatusList li > span { display: flex; align-items: center; gap: 9px; }
+.restaurantStatsStatusList i { width: 9px; height: 9px; border-radius: 50%; background: #7a8790; }
+.restaurantStatsStatusList i.status-pending { background: #d99c35; }
+.restaurantStatsStatusList i.status-proposed { background: #6585cf; }
+.restaurantStatsStatusList i.status-accepted { background: #128447; }
+.restaurantStatsStatusList i.status-change_requested { background: #cb6458; }
+.restaurantStatsTopItems { grid-column: 1 / -1; }
+.restaurantStatsTopItems li { padding-bottom: 10px; border-bottom: 1px solid #edf1ec; }
+.restaurantStatsAccess { max-width: 520px; margin-top: 24px; }
+.restaurantStatsMessage { color: #65736a; }
+@media (max-width: 760px) {
+  .restaurantStatsCards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .restaurantStatsCards article { padding: 14px; }
+  .restaurantStatsPanels { grid-template-columns: 1fr; }
+  .restaurantStatsTopItems { grid-column: auto; }
+  .restaurantStatsToolbar { align-items: flex-start; flex-direction: column; }
+  .restaurantStatsPeriods { gap: 6px; }
+  .restaurantStatsPeriods button { padding: 7px 10px; font-size: 12px; }
+}
